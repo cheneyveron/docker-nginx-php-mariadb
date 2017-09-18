@@ -1,3 +1,9 @@
 [submodule "docker-mariadb-10.1"]
 	path = docker-mariadb-10.1
 	url = git@github.com:cheneyveron/docker-mariadb-10.1.git
+[submodule "docker-php-fpm"]
+	path = docker-php-fpm
+	url = git@github.com:cheneyveron/docker-php-fpm.git
+[submodule "docker-nginx"]
+	path = docker-nginx
+	url = git@github.com:cheneyveron/docker-nginx.git
