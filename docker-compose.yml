@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  web:
+    image: cheneyveron/nginx:alpine
+    container_name: web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/www:/var/www
+      - /home/log:/var/log
+      - /etc/letsencrypt:/etc/letsencrypt
+    links:
+      - db:db
+      - fpm:fpm
+    environment:
+      - GIT_REPO: github.com/cheneyveron/web-backup.git
+      - GIT_EMAIL: cheneyveron@live.cn
+      - GIT_USER: cheneyveron
+      - GIT_TOKEN: X23333333333333333r
+    restart: always
+  
+  db:
+    image: cheneyverpn/mariadb:10.1
+    container_name: db
+    volumes:
+      - /data/db:/var/lib/mysql
+    restart: always
+    environment:
+      - GIT_REPO: github.com/cheneyveron/db-backup.git
+      - GIT_EMAIL: cheneyveron@live.cn
+      - GIT_USER: cheneyveron
+      - GIT_TOKEN: X23333333333333333r
+      - MYSQL_ROOT_PASSWORD: 123456
+
+  fpm:
+    image: cheneyveron/php:fpm
+    container_name: fpm
+    volumes:
+      - /data/www:/var/www
+    restart: always

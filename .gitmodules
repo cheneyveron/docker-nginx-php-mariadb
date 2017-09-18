@@ -1,0 +1,3 @@
+[submodule "docker-mariadb-10.1"]
+	path = docker-mariadb-10.1
+	url = git@github.com:cheneyveron/docker-mariadb-10.1.git
